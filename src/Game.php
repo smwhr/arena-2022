@@ -98,7 +98,8 @@ class Game{
                           $this->robots[$letter]
                                ->getName());
           break;
-        case 'RobotWar\Robot\Advance':
+        case 'RobotWar\Robot\Fire':
+          // Ilan bosse ici
           break;
     }
   }

@@ -2,6 +2,7 @@
 namespace RobotWar\Manager;
 
 use RobotWar\Robot;
+use RobotWar\Position;
 
 class PositionManager{
   
@@ -26,5 +27,10 @@ class PositionManager{
       if($this->spawnPosition == "A"){
         $this->spawnPosition = "B";
       }
+  }
+
+  public function rotate($letter, $sens){
+        $this->positions[$letter]
+            = $this->positions[$letter]->rotate($sens);
   }
 }
