@@ -31,11 +31,11 @@ class LifeManager
   {
     $survivor = strlen(get_life());
     $robotlife = $this->lifeManager->get_life();
-    foreach ($robotlife as $value)
-      if ($value = 0) {
-         $survivor = $survivor- 1
-      }
-      return $survivor
+    foreach ($robotlife as &$value)
+      if ($value <= 0) {
+        $survivor = $survivor - 1;
+      };
+    return $survivor;
   }
 
   public function addRobot(Robot $robot)
