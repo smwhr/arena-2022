@@ -27,17 +27,17 @@ class GameController{
 
   public function nextAction(){
     $game = $_SESSION["game"];
+    var_dump($game->nextTurn());
+    // try{
+    //   $turn_report = $game->nextTurn();
+    //   $_SESSION["game"] = $game;
 
-    try{
-      $turn_report = $game->nextTurn();
-      $_SESSION["game"] = $game;
+    // }catch(WinningCondition $e){
+    //   include("../templates/winner.html.php");
+    //   return;
+    // }
 
-    }catch(WinningCondition $e){
-      include("../templates/winner.html.php");
-      return;
-    }
-
-    include("../templates/game.html.php");
+    // include("../templates/game.html.php");
   }
 
 }

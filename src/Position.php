@@ -12,7 +12,7 @@ class Position{
   const WEST = "W";
 
   const LEFT = "L";
-  const RIGHT = "L";
+  const RIGHT = "R";
 
   public function __construct($x, $y){
     $this->x = $x;

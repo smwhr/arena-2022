@@ -40,6 +40,7 @@ class Game{
     */
     foreach($this->robots as $letter => $robot){
         $surroundings = $this->positionManager->getSurroundings($letter);
+
         $robot->setSurroundings($surroundings);
     }
 
@@ -98,7 +99,9 @@ class Game{
                           $this->robots[$letter]
                                ->getName());
           break;
-        case 'RobotWar\Robot\Advance':
+        case 'RobotWar\Robot\Fire':
+          $this->positionManager->getInFront($letter);
+          return sprintf('%s shoot.', $this->robots[$letter]->getName());
           break;
     }
   }
