@@ -5,6 +5,8 @@ use \RobotWar\Arena;
 use \RobotWar\Robot;
 use \RobotWar\Game;
 
+include("../templates/header.html.php");
+
 class GameController{
 
   public function startAction(){
@@ -41,3 +43,5 @@ class GameController{
   }
 
 }
+
+include("../templates/footer.html.php");
