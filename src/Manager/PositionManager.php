@@ -29,6 +29,11 @@ class PositionManager{
       }
   }
 
+
+  public function getPosition($letter){
+      return $this->positions[$letter];
+  }
+  
   public function rotate($letter, $sens){
         $this->positions[$letter]
             = $this->positions[$letter]->rotate($sens);
