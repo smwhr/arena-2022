@@ -1,6 +1,9 @@
 <?php
 namespace RobotWar;
 
+use RobotWar\Robot\Action;
+use RobotWar\Position;
+
 class Game{
 
   private $lifeManager;
@@ -31,7 +34,6 @@ class Game{
   }
 
   public function nextTurn(){
-    // @todo
     /*
        1. transmettre à chaque robot
           les infos 
@@ -78,5 +80,26 @@ class Game{
         }
 
         return $report;
+  }
+
+  public function do($letter, Action $action){
+    switch(get_class($action)){
+        case 'RobotWar\Robot\Advance':
+          break;
+        case 'RobotWar\Robot\TurnLeft':
+          $this->positionManager->rotate($letter, Position::LEFT);
+          return sprintf('%s turned left.',
+                          $this->robots[$letter]
+                               ->getName());
+          break;
+        case 'RobotWar\Robot\TurnRight':
+          $this->positionManager->rotate($letter, Position::RIGHT);
+          return sprintf('%s turned right.',
+                          $this->robots[$letter]
+                               ->getName());
+          break;
+        case 'RobotWar\Robot\Advance':
+          break;
+    }
   }
 }

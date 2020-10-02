@@ -2,15 +2,17 @@
 namespace RobotWar;
 
 class Position{
-  public $x;
-  public $y;
-  public $direction;
+  private $x;
+  private $y;
+  private $direction;
 
   const NORTH = "N";
   const EAST = "E";
   const SOUTH = "S";
   const WEST = "W";
 
+  const LEFT = "L";
+  const RIGHT = "L";
 
   public function __construct($x, $y){
     $this->x = $x;
