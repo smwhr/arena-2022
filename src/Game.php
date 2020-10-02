@@ -1,6 +1,9 @@
 <?php
 namespace RobotWar;
 
+use RobotWar\Robot\Action;
+use RobotWar\Robot\Advance;
+
 class Game{
 
   private $lifeManager;
@@ -28,6 +31,41 @@ class Game{
             $robots
           );
 
+  }
+
+  public function can($letter,Action $action){
+      if($action == Advance::class){
+          $position = $this->positionManager->getPosition($letter);
+          $posX = $position->getX();
+          $posY = $position->getY();
+          $direction = $position->getDirection();
+          switch ($direction){
+              case "N":
+                  if ($position->getCell($posX,$posY-1) != ""){
+                      return false;
+                  }
+                  break;
+
+              case "E":
+                  if ($position->getCell($posX+1,$posY) != ""){
+                      return false;
+                  }
+                  break;
+
+              case "S":
+                  if ($position->getCell($posX,$posY+1) != ""){
+                      return false;
+                  }
+                  break;
+
+              case "W":
+                  if ($position->getCell($posX-1,$posY) != ""){
+                      return false;
+                  }
+                  break;
+          }
+      }
+      return true;
   }
 
   public function nextTurn(){

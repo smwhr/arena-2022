@@ -27,4 +27,8 @@ class PositionManager{
         $this->spawnPosition = "B";
       }
   }
+
+  public function getPosition($letter){
+      return $this->positions[$letter];
+  }
 }
