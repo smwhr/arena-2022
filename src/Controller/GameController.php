@@ -14,7 +14,8 @@ class GameController{
     $board_file = "../data/simple.txt";
     $arena = new Arena($board_file);
     $tab = $arena->map;
-    echo'<pre>'; var_dump($tab); echo '</pre>';
+
+    
     $game  = new Game(
       [$robot1, $robot2],
       $arena
