@@ -1,7 +1,6 @@
 <?php
-
-session_start();
 require_once("../vendor/autoload.php");
+session_start();
 
 // on récupère l'url
 $url = $_SERVER["REQUEST_URI"];
