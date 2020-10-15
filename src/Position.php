@@ -52,4 +52,30 @@ class Position{
       $newSens[$sens][$this->getDirection()]
     );
   }
+
+  public function move($direction){
+    switch ($direction){
+      case "N":
+        $this->y--;
+        break;
+
+      case "E":
+        $this->x++;
+        break;
+
+      case "S":
+        $this->y++;
+        break;
+
+      case "W":
+        $this->x--;
+        break;
+    }
+
+    return new Position(
+      $this->getX(),
+      $this->getY(),
+      $this->getDirection()
+    );
+  }
 }
