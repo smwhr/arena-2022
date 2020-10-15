@@ -12,11 +12,8 @@ class Arena{
       }
       $this->map = $tab;
       $wall = new Wall();
-      $wall->sign =
       $empty = new Empty();
-      $empty->sign =
       $spawnpoint = new Spawnpoint();
-      $spawnpoint->sign = 
     }
 
     public function spawn($letter, Robot $robot): Position{
