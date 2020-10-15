@@ -119,4 +119,11 @@ class Game{
           break;
     }
   }
+  public function getRobotStats(){
+    $stats = [];
+    foreach ($this->robots as $letter => $robot) {
+      $stats[] = [$robot->getName(), $this->lifeManager->getLifeFor($letter)];
+    }
+    return $stats;
+  }
 }
