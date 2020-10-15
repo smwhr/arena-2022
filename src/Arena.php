@@ -2,18 +2,35 @@
 namespace RobotWar;
 
 class Arena{
-    public $map;
+    private $map;
 
     public function __construct($file){
       $tab = file_get_contents($file);
       $tab = explode("\n", $tab);
       foreach($tab as $key => $value){
-        $tab[$key] = str_split($tab[$key]);
+        $tab[$key] = array_map(
+            fn($s) => $this->translate($s), 
+          str_split($tab[$key]));
       }
       $this->map = $tab;
-      $wall = new Arena\Wall();
-      $empty = new Arena\EmptySpace();
-      $spawnpoint = new Arena\Spawnpoint();
+      var_dump($this->map);
+    }
+
+    private function translate($sign){
+      switch($sign){
+        case " ":
+          return new Arena\EmptySpace();
+        case "x":
+          return new Arena\Wall();
+        case "A":
+        case "B":
+          return new Arena\Spawnpoint($sign);
+      }
+
+    }
+
+    public function getMap(){
+      return $this->map;
     }
 
     public function spawn($letter, Robot $robot): Position{
@@ -22,4 +39,5 @@ class Arena{
         // var_dump($p);
         return $p;
     }
+
 }
