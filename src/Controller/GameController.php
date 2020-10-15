@@ -34,7 +34,6 @@ class GameController{
 
   public function nextAction(){
     $game = $_SESSION["game"];
-    var_dump($game->nextTurn());
     // try{
     //   $turn_report = $game->nextTurn();
     //   $_SESSION["game"] = $game;
