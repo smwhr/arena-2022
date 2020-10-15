@@ -9,8 +9,8 @@ use \RobotWar\Game;
 class GameController{
 
   public function startAction(){
-    $robot1 = new Robot("Bobby");
-    $robot2 = new Robot("Dylan");
+    $robot1 = new \Player\DoNothingBot("Bobby");
+    $robot2 = new \Player\DoNothingBot("Dylan");
 
     $board_file = "../data/simple.txt";
     $arena = new Arena($board_file);
@@ -34,11 +34,10 @@ class GameController{
 
   public function nextAction(){
     $game = $_SESSION["game"];
-
+    
     try{
-      $turn_report = $game->nextTurn();
-      $_SESSION["game"] = $game;
-
+       $turn_report = $game->nextTurn();
+       $_SESSION["game"] = $game;
     }catch(WinningCondition $e){
       $this -> include_body("../templates/winner.html.php");
       return;

@@ -10,6 +10,7 @@
   <button>Next</button>
 </form>
 <?php
+
 $rapports = [
   "player 1 a avancer",
   "player 1 a reculer",
@@ -26,3 +27,8 @@ foreach ($rapports as $rapport ) {
    echo '<li>' . $rapport . '</li>';
 }
 ?>
+
+<?php
+include("../templates/life.html.php");
+?>
+
