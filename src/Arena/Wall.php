@@ -3,7 +3,7 @@ namespace RobotWar\Arena;
 
 class Wall
 {
-  public $sign
+  public $sign;
 
 }
 

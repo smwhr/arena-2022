@@ -11,9 +11,9 @@ class Arena{
         $tab[$key] = str_split($tab[$key]);
       }
       $this->map = $tab;
-      $wall = new Wall();
-      $empty = new Empty();
-      $spawnpoint = new Spawnpoint();
+      $wall = new Arena\Wall();
+      $empty = new Arena\EmptySpace();
+      $spawnpoint = new Arena\Spawnpoint();
     }
 
     public function spawn($letter, Robot $robot): Position{

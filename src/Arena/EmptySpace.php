@@ -1,7 +1,7 @@
 <?php
 namespace RobotWar\Arena;
 
-class Empty
+class EmptySpace
 {
   public $sign
 
