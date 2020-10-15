@@ -12,9 +12,10 @@ class GameController{
     $robot1 = new Robot("Bobby");
     $robot2 = new Robot("Dylan");
 
-    $board_file = "data/simple.txt";
+    $board_file = "../data/simple.txt";
     $arena = new Arena($board_file);
 
+    
     $game  = new Game(
       [$robot1, $robot2],
       $arena
