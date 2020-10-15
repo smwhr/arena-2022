@@ -93,19 +93,20 @@ class Game{
   public function do($letter, Action $action){
     switch(get_class($action)){
         case 'RobotWar\Robot\Advance':
-          break;
+          $this->positionManager->move($letter);
+          return sprintf('%s make a move.',
+            $this->robots[$letter]
+              ->getName());
         case 'RobotWar\Robot\TurnLeft':
           $this->positionManager->rotate($letter, Position::LEFT);
           return sprintf('%s turned left.',
                           $this->robots[$letter]
                                ->getName());
-          break;
         case 'RobotWar\Robot\TurnRight':
           $this->positionManager->rotate($letter, Position::RIGHT);
           return sprintf('%s turned right.',
                           $this->robots[$letter]
                                ->getName());
-          break;
         case 'RobotWar\Robot\Fire':
           // Ilan bosse ici
           break;
