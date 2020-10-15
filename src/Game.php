@@ -35,7 +35,7 @@ class Game{
     $this->lifeManager = $lifeManager;
     $this->positionManager = $positionManager;
     $this->robots = array_combine(
-            ["A", "B"], 
+            ["A", "B"],
             $robots
           );
 
@@ -43,43 +43,16 @@ class Game{
 
   public function can($letter,Action $action){
       if($action == Advance::class){
-          $position = $this->positionManager->getPosition($letter);
-          $posX = $position->getX();
-          $posY = $position->getY();
-          $direction = $position->getDirection();
-          switch ($direction){
-              case "N":
-                  if ($position->getCell($posX,$posY-1) != ""){
-                      return false;
-                  }
-                  break;
-
-              case "E":
-                  if ($position->getCell($posX+1,$posY) != ""){
-                      return false;
-                  }
-                  break;
-
-              case "S":
-                  if ($position->getCell($posX,$posY+1) != ""){
-                      return false;
-                  }
-                  break;
-
-              case "W":
-                  if ($position->getCell($posX-1,$posY) != ""){
-                      return false;
-                  }
-                  break;
-          }
+        $this->positionManager->canMove($letter);
+      }else{
+        return true;
       }
-      return true;
   }
 
   public function nextTurn(){
     /*
        1. transmettre à chaque robot
-          les infos 
+          les infos
     */
     foreach($this->robots as $letter => $robot){
         $surroundings = $this->positionManager->getSurroundings($letter);
