@@ -1,8 +1,3 @@
-<?php
-<<<<<<< HEAD
-
-?>
-
 <table>
     <tr>
         <?php 
@@ -14,9 +9,3 @@
     </tr>
 </table>
 
-
-
-=======
-include("../templates/header.html.php");
-?>
->>>>>>> 2059fdc7ef290745a4426ceffc0b51a045868fc8
