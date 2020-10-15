@@ -1,5 +1,5 @@
 <?php
-namespace RobotWar\Arena;
+namespace RobotWar;
 
 class Arena{
     public $map;
