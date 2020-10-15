@@ -34,15 +34,10 @@ class GameController{
 
   public function nextAction(){
     $game = $_SESSION["game"];
-    // try{
-    //   $turn_report = $game->nextTurn();
-    //   $_SESSION["game"] = $game;
-
-    // }catch(WinningCondition $e){
-    //   include("../templates/winner.html.php");
-    //   return;
-    // }
-
+    
+    try{
+       $turn_report = $game->nextTurn();
+       $_SESSION["game"] = $game;
     }catch(WinningCondition $e){
       $this -> include_body("../templates/winner.html.php");
       return;
