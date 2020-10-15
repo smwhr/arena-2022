@@ -2,7 +2,15 @@
 namespace RobotWar;
 
 use RobotWar\Robot\Action;
+use RobotWar\Robot\Advance;
+use RobotWar\Robot\TurnLeft;
+use RobotWar\Robot\TurnRight;
+use RobotWar\Robot\Fire;
+
+
 use RobotWar\Position;
+
+
 
 class Game{
 
@@ -27,16 +35,24 @@ class Game{
     $this->lifeManager = $lifeManager;
     $this->positionManager = $positionManager;
     $this->robots = array_combine(
-            ["A", "B"], 
+            ["A", "B"],
             $robots
           );
 
   }
 
+  public function can($letter,Action $action){
+      if($action == Advance::class){
+        $this->positionManager->canMove($letter);
+      }else{
+        return true;
+      }
+  }
+
   public function nextTurn(){
     /*
        1. transmettre à chaque robot
-          les infos 
+          les infos
     */
     foreach($this->robots as $letter => $robot){
         $surroundings = $this->positionManager->getSurroundings($letter);
@@ -85,25 +101,31 @@ class Game{
 
   public function do($letter, Action $action){
     switch(get_class($action)){
-        case 'RobotWar\Robot\Advance':
+        case Advance::class:
           break;
-        case 'RobotWar\Robot\TurnLeft':
+        case TurnLeft::class:
           $this->positionManager->rotate($letter, Position::LEFT);
           return sprintf('%s turned left.',
                           $this->robots[$letter]
                                ->getName());
           break;
-        case 'RobotWar\Robot\TurnRight':
+        case TurnRight::class:
           $this->positionManager->rotate($letter, Position::RIGHT);
           return sprintf('%s turned right.',
                           $this->robots[$letter]
                                ->getName());
           break;
+<<<<<<< HEAD
         case 'RobotWar\Robot\Fire':
           if($this->positionManager->getInFront($letter) === 'player'){
             return sprintf('%s shoot.', $this->robots[$letter]->getName());
             break;
           }
+=======
+        case Fire::class:
+          // Ilan bosse ici
+          break;
+>>>>>>> upstream/main
     }
   }
 }
