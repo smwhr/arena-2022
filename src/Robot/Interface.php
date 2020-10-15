@@ -2,13 +2,31 @@
 
 namespace RobotWar\Robot;
 
-class Interface{
+class RobotInterface{
 
 
-public function interface(){
+    public function getSurroundings(){
+        
+    } 
 
-    $this->$surroundings;
+    public function requestAction(){
+
+    }
+
+    // public function addRobot(){}
+
+    // public function getSurvivors(){}
+
+    // public function getName(){}
     
-} 
+    // public function do(){}
+
+    // public function can(){}
+    
+    public function rotate(){
+
+    } 
+
+
 
 }
