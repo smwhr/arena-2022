@@ -1,7 +1,7 @@
 <?php
 namespace RobotWar;
 
-class Robot{
+class Robot implements RobotInterface{
 
   private $name;
 

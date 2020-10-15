@@ -40,6 +40,10 @@ class PositionManager
     return $this->positions[$letter];
   }
 
+  public function getSurroundings(){
+    // @todo
+  }
+
   public function rotate($letter, $sens)
   {
     $this->positions[$letter]
