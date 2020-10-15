@@ -5,28 +5,12 @@ namespace RobotWar\Robot;
 class RobotInterface{
 
 
-    public function getSurroundings(){
-        
-    } 
+    public function setSurroundings();
 
-    public function requestAction(){
+    public function requestAction();
 
-    }
-
-    // public function addRobot(){}
-
-    // public function getSurvivors(){}
-
-    // public function getName(){}
+    public function getName();
     
-    // public function do(){}
-
-    // public function can(){}
-    
-    public function rotate(){
-
-    } 
-
-
+    public function do();
 
 }
