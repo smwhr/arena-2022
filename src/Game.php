@@ -3,7 +3,14 @@ namespace RobotWar;
 
 use RobotWar\Robot\Action;
 use RobotWar\Robot\Advance;
+use RobotWar\Robot\TurnLeft;
+use RobotWar\Robot\TurnRight;
+use RobotWar\Robot\Fire;
+
+
 use RobotWar\Position;
+
+
 
 class Game{
 
@@ -120,21 +127,21 @@ class Game{
 
   public function do($letter, Action $action){
     switch(get_class($action)){
-        case 'RobotWar\Robot\Advance':
+        case Advance::class:
           break;
-        case 'RobotWar\Robot\TurnLeft':
+        case TurnLeft::class:
           $this->positionManager->rotate($letter, Position::LEFT);
           return sprintf('%s turned left.',
                           $this->robots[$letter]
                                ->getName());
           break;
-        case 'RobotWar\Robot\TurnRight':
+        case TurnRight::class:
           $this->positionManager->rotate($letter, Position::RIGHT);
           return sprintf('%s turned right.',
                           $this->robots[$letter]
                                ->getName());
           break;
-        case 'RobotWar\Robot\Fire':
+        case Fire::class:
           // Ilan bosse ici
           break;
     }

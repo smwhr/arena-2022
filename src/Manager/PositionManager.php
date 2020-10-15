@@ -12,7 +12,7 @@ class PositionManager{
   private $positions;
 
 
-  public function __construct($arena){
+  public function __construct(Arena $arena){
       $this->arena = $arena;
       $this->spawnPosition = "A";
       $this->positions = [];
