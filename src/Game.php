@@ -36,7 +36,7 @@ class Game{
 
   }
 
-  public function can($letter,Action $action){
+  public function can($letter, Action $action){
       if($action == Advance::class){
         $this->positionManager->canMove($letter);
       }else{
@@ -71,7 +71,7 @@ class Game{
     /*
         3. verifier que c'est possible
     */
-    $actions = array_filter($actions, function($letter, $action){
+    $actions = array_filter($actions, function($action, $letter){
       return $this->can($letter, $action);
     }, ARRAY_FILTER_USE_BOTH);
 
