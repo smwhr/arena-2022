@@ -21,4 +21,8 @@ class LifeManager{
         $this->spawnPosition = "B";
       }
   }
+
+  public function getX($a){
+    return $this-> lives[$a];
+  }
 }

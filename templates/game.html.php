@@ -9,3 +9,6 @@
 <form action="/next">
   <button>Next</button>
 </form>
+<?php
+include("../templates/life.html.php");
+?>
