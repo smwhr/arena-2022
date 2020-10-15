@@ -2,10 +2,10 @@
 
 namespace RobotWar\Robot;
 
-class RobotInterface{
+interface RobotInterface{
 
 
-    public function setSurroundings();
+    public function setSurroundings($surroundings);
 
     public function requestAction();
 
