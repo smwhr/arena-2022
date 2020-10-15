@@ -28,5 +28,6 @@ class LifeManager{
 
   public function getSurvivors(){
     // @todo
+    
   }
 }
