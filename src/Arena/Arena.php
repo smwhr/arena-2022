@@ -21,7 +21,8 @@ class Arena{
 
     public function spawn($letter, Robot $robot): Position{
         // @todo
-
-        return new Position(3,3);
+        $p = new Position(3,3);
+        // var_dump($p);
+        return $p;
     }
 }

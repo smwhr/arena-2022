@@ -21,4 +21,13 @@ class LifeManager{
         $this->spawnPosition = "B";
       }
   }
-}
+
+
+  public function getLifeFor($letter){
+    return $this-> lives[$letter];
+  }
+
+  public function getSurvivors(){
+
+  }
+} 

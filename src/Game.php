@@ -3,7 +3,9 @@ namespace RobotWar;
 
 use RobotWar\Robot\Action;
 use RobotWar\Robot\Advance;
-use RobotWar\Position;
+use RobotWar\Robot\TurnLeft;
+use RobotWar\Robot\TurnRight;
+use RobotWar\Robot\Fire;
 
 class Game{
 
@@ -28,54 +30,28 @@ class Game{
     $this->lifeManager = $lifeManager;
     $this->positionManager = $positionManager;
     $this->robots = array_combine(
-            ["A", "B"], 
+            ["A", "B"],
             $robots
           );
 
   }
 
-  public function can($letter,Action $action){
+  public function can($letter, Action $action){
       if($action == Advance::class){
-          $position = $this->positionManager->getPosition($letter);
-          $posX = $position->getX();
-          $posY = $position->getY();
-          $direction = $position->getDirection();
-          switch ($direction){
-              case "N":
-                  if ($position->getCell($posX,$posY-1) != ""){
-                      return false;
-                  }
-                  break;
-
-              case "E":
-                  if ($position->getCell($posX+1,$posY) != ""){
-                      return false;
-                  }
-                  break;
-
-              case "S":
-                  if ($position->getCell($posX,$posY+1) != ""){
-                      return false;
-                  }
-                  break;
-
-              case "W":
-                  if ($position->getCell($posX-1,$posY) != ""){
-                      return false;
-                  }
-                  break;
-          }
+        $this->positionManager->canMove($letter);
+      }else{
+        return true;
       }
-      return true;
   }
 
   public function nextTurn(){
     /*
        1. transmettre à chaque robot
-          les infos 
+          les infos
     */
     foreach($this->robots as $letter => $robot){
         $surroundings = $this->positionManager->getSurroundings($letter);
+
         $robot->setSurroundings($surroundings);
     }
 
@@ -95,7 +71,7 @@ class Game{
     /*
         3. verifier que c'est possible
     */
-    $actions = array_filter($actions, function($letter, $action){
+    $actions = array_filter($actions, function($action, $letter){
       return $this->can($letter, $action);
     }, ARRAY_FILTER_USE_BOTH);
 
@@ -120,23 +96,37 @@ class Game{
 
   public function do($letter, Action $action){
     switch(get_class($action)){
-        case 'RobotWar\Robot\Advance':
-          break;
-        case 'RobotWar\Robot\TurnLeft':
+      case Advance::class:
+          $this->positionManager->move($letter);
+          return sprintf('%s make a move.',
+            $this->robots[$letter]
+              ->getName());
+
+        case TurnLeft::class:
           $this->positionManager->rotate($letter, Position::LEFT);
           return sprintf('%s turned left.',
                           $this->robots[$letter]
                                ->getName());
-          break;
-        case 'RobotWar\Robot\TurnRight':
+
+        case TurnRight::class:
           $this->positionManager->rotate($letter, Position::RIGHT);
           return sprintf('%s turned right.',
                           $this->robots[$letter]
                                ->getName());
-          break;
-        case 'RobotWar\Robot\Fire':
-          // Ilan bosse ici
+        
+        case Fire::class:
+          if($this->positionManager->getInFront($letter) === 'player'){
+            return sprintf('%s shoot.', $this->robots[$letter]->getName());
+            break;
+          }
           break;
     }
+  }
+  public function getRobotStats(){
+    $stats = [];
+    foreach ($this->robots as $letter => $robot) {
+      $stats[] = [$robot->getName(), $this->lifeManager->getLifeFor($letter)];
+    }
+    return $stats;
   }
 }
