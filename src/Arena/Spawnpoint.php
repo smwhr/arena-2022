@@ -1,7 +1,7 @@
 <?php
 namespace RobotWar\Arena;
 
-class Spawnpoint
+class Spawnpoint implements Walkable, FireTraversable
 {
   private $letter;
 

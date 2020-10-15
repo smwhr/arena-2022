@@ -3,8 +3,8 @@ xxxxxxxxxxxxxx
 xx          xx
 xx          xx
 xx  A       xx
-xx          xx
-xx          xx
+xx      00  xx
+xxxxx   00  xx
 xx          xx
 xx       B  xx
 xx          xx

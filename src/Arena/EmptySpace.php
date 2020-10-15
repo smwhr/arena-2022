@@ -1,7 +1,7 @@
 <?php
 namespace RobotWar\Arena;
 
-class EmptySpace
+class EmptySpace implements Walkable, FireTraversable
 {
 }
 

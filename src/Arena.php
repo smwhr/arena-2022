@@ -22,6 +22,8 @@ class Arena{
           return new Arena\EmptySpace();
         case "x":
           return new Arena\Wall();
+        case "0":
+          return new Arena\Water();
         case "A":
         case "B":
           return new Arena\Spawnpoint($sign);
