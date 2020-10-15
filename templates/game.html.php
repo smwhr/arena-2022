@@ -9,3 +9,8 @@
 <form action="/next">
   <button>Next</button>
 </form>
+<?php
+  for ($ ; $ ; $ ) { 
+    # code...
+  }
+?>
