@@ -10,7 +10,5 @@ class RobotInterface{
     public function requestAction();
 
     public function getName();
-    
-    public function do();
 
 }
