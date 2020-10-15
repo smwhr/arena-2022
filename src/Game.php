@@ -51,6 +51,7 @@ class Game{
     */
     foreach($this->robots as $letter => $robot){
         $surroundings = $this->positionManager->getSurroundings($letter);
+
         $robot->setSurroundings($surroundings);
     }
 
@@ -112,9 +113,12 @@ class Game{
           return sprintf('%s turned right.',
                           $this->robots[$letter]
                                ->getName());
-
-        case Fire::class:
-          // Ilan bosse ici
+        
+        case Fire::class
+          if($this->positionManager->getInFront($letter) === 'player'){
+            return sprintf('%s shoot.', $this->robots[$letter]->getName());
+            break;
+          }
           break;
     }
   }
