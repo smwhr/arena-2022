@@ -1,5 +1,5 @@
 <?php
-namespace RobotWar;
+namespace RobotWar\Arena;
 
 class Arena{
     public $map;
@@ -11,6 +11,12 @@ class Arena{
         $tab[$key] = str_split($tab[$key]);
       }
       $this->map = $tab;
+      $wall = new Wall();
+      $wall->sign =
+      $empty = new Empty();
+      $empty->sign =
+      $spawnpoint = new Spawnpoint();
+      $spawnpoint->sign = 
     }
 
     public function spawn($letter, Robot $robot): Position{
