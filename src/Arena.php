@@ -13,7 +13,6 @@ class Arena{
           str_split($tab[$key]));
       }
       $this->map = $tab;
-      var_dump($this->map);
     }
 
     private function translate($sign){
