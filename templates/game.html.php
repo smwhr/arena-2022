@@ -10,7 +10,7 @@
   <button>Next</button>
 </form>
 <?php
-$rapport = [
+$rapports = [
   "player 1 a avancer",
   "player 1 a reculer",
   "player 1 a bouger a gauche",
@@ -22,7 +22,7 @@ $rapport = [
   "player 2 a bouger a droite",
   "player 2 a attaquer",
 ];
-foreach ($rapport as $rapport ) {
+foreach ($rapports as $rapport ) {
    echo '<li>' . $rapport . '</li>';
 }
 ?>
