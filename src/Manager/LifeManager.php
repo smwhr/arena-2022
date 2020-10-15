@@ -22,7 +22,7 @@ class LifeManager{
       }
   }
 
-  public function getX($a){
+  public function getLifeFor($a){
     return $this-> lives[$a];
   }
 }
