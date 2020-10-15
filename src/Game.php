@@ -115,17 +115,11 @@ class Game{
                           $this->robots[$letter]
                                ->getName());
           break;
-<<<<<<< HEAD
         case 'RobotWar\Robot\Fire':
           if($this->positionManager->getInFront($letter) === 'player'){
             return sprintf('%s shoot.', $this->robots[$letter]->getName());
             break;
           }
-=======
-        case Fire::class:
-          // Ilan bosse ici
-          break;
->>>>>>> upstream/main
     }
   }
 }
