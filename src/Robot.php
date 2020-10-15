@@ -1,9 +1,10 @@
 <?php
 namespace RobotWar;
 
-class Robot{
+abstract class Robot implements Robot\RobotInterface{
 
   private $name;
+  private $surroundings;
 
   function __construct($name){
     $this->name = $name;
@@ -11,6 +12,10 @@ class Robot{
 
   public function getName(){
     return $this->name;
+  }
+
+  public function setSurroundings($surroundings){
+    $this->surroundings = $surroundings;
   }
 
 }

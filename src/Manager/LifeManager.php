@@ -22,16 +22,12 @@ class LifeManager{
       }
   }
 
-<<<<<<< Updated upstream
+
   public function getLifeFor($letter){
     return $this-> lives[$letter];
-=======
-  public function getLifeFor($a){
-    return $this-> lives[$a];
   }
 
   public function getSurvivors(){
-    
->>>>>>> Stashed changes
+
   }
-}
+} 

@@ -7,11 +7,6 @@ use RobotWar\Robot\TurnLeft;
 use RobotWar\Robot\TurnRight;
 use RobotWar\Robot\Fire;
 
-
-use RobotWar\Position;
-
-
-
 class Game{
 
   private $lifeManager;
@@ -41,7 +36,7 @@ class Game{
 
   }
 
-  public function can($letter,Action $action){
+  public function can($letter, Action $action){
       if($action == Advance::class){
         $this->positionManager->canMove($letter);
       }else{
@@ -56,6 +51,7 @@ class Game{
     */
     foreach($this->robots as $letter => $robot){
         $surroundings = $this->positionManager->getSurroundings($letter);
+
         $robot->setSurroundings($surroundings);
     }
 
@@ -75,7 +71,7 @@ class Game{
     /*
         3. verifier que c'est possible
     */
-    $actions = array_filter($actions, function($letter, $action){
+    $actions = array_filter($actions, function($action, $letter){
       return $this->can($letter, $action);
     }, ARRAY_FILTER_USE_BOTH);
 
@@ -100,22 +96,29 @@ class Game{
 
   public function do($letter, Action $action){
     switch(get_class($action)){
-        case Advance::class:
-          break;
+      case Advance::class:
+          $this->positionManager->move($letter);
+          return sprintf('%s make a move.',
+            $this->robots[$letter]
+              ->getName());
+
         case TurnLeft::class:
           $this->positionManager->rotate($letter, Position::LEFT);
           return sprintf('%s turned left.',
                           $this->robots[$letter]
                                ->getName());
-          break;
+
         case TurnRight::class:
           $this->positionManager->rotate($letter, Position::RIGHT);
           return sprintf('%s turned right.',
                           $this->robots[$letter]
                                ->getName());
-          break;
+        
         case Fire::class:
-          // Ilan bosse ici
+          if($this->positionManager->getInFront($letter) === 'player'){
+            return sprintf('%s shoot.', $this->robots[$letter]->getName());
+            break;
+          }
           break;
     }
   }

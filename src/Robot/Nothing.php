@@ -1,4 +1,4 @@
 <?php
 namespace RobotWar\Robot;
 
-class Fire extends Action{}
+class Nothing extends Action{}

@@ -40,6 +40,10 @@ class PositionManager
     return $this->positions[$letter];
   }
 
+  public function getSurroundings(){
+    // @todo
+  }
+
   public function rotate($letter, $sens)
   {
     $this->positions[$letter]
@@ -79,6 +83,11 @@ class PositionManager
         break;
     }
     return true;
+  }
+
+  public function move($letter)
+  {
+    $this->positions[$letter] = $this->positions[$letter]->move($this->positions[$letter]->getDirection());
   }
 
 }
