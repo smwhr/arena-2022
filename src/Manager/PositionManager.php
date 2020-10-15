@@ -81,4 +81,9 @@ class PositionManager
     return true;
   }
 
+  public function move($letter)
+  {
+    $this->positions[$letter] = $this->positions[$letter]->move($this->positions[$letter]->getDirection());
+  }
+
 }
